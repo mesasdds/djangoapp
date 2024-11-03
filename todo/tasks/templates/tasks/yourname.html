@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YourNameeee</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-    <h1>Seu nome é: {{name}}</h1>
-    
-</body>
-</html>
+{% block title %}Qual é o seu nome{% endblock %}
+
+{% block content %}
+<h1>O seu nome é: {{ name }}</h1>
+{% endblock %}
