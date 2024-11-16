@@ -6,21 +6,21 @@ from .forms import TaskForm
 from django.contrib import messages
 
 def taskList(request):
-
     search = request.GET.get('search')
 
     if search:
-        
-        tasks = Task.objects.filter(title__icontains=search)
-
+        if request.user.is_authenticated:
+            tasks = Task.objects.filter(title__icontains=search, user=request.user)
+        else:
+            tasks = []  # Usuário não autenticado não pode buscar tarefas
     else:
-
-        tasks_list = Task.objects.all().order_by('-created_at')
-        paginator = Paginator(tasks_list, 3)
-
-        page = request.GET.get('page')
-
-        tasks = paginator.get_page(page)
+        if request.user.is_authenticated:
+            tasks_list = Task.objects.filter(user=request.user).order_by('-created_at')
+            paginator = Paginator(tasks_list, 3)
+            page = request.GET.get('page')
+            tasks = paginator.get_page(page)
+        else:
+            tasks = []  # Usuário não autenticado não possui tarefas
 
     return render(request, 'tasks/list.html', {'tasks': tasks})
 
@@ -34,6 +34,7 @@ def newTask(request):
 
         if form.is_valid():
             task = form.save(commit=False)
+            task.user = request.user
             task.done = 'doing'
             task.save()
             return redirect('/')
