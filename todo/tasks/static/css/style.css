@@ -2,6 +2,10 @@
     padding: 0;
 }
 
+.container-fluid .row {
+    margin: 0;
+}
+
 /* Navbar */
 
 .navbar  {
@@ -24,7 +28,8 @@
 
 /* Botão de adicionar */
 
-#add-link{
+
+#add-link {
     text-decoration: none;
 }
 
@@ -48,8 +53,8 @@
 
 .fas.fa-search {
     position: absolute;
-    top: 10rem;
-    right: 12rem;
+    top: 12px;
+    right: 26px;
     cursor: pointer;
 }
 
@@ -78,6 +83,10 @@
     border-bottom: 1px dashed #CCC;
 }
 
+.task-item.done {
+    background-color: #CCC;
+}  
+
 .fas.fa-trash {
     color: #db1e47;
     cursor: pointer;
@@ -93,7 +102,19 @@
     font-size: 20px;
     float: right;
 }
-/* branch reload */
+
+.fa-check {
+    color: #CCC;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 20px;
+    float: right;
+}
+
+.done .fa-check {
+    color: #3476e2;
+}
+
 /* Rodapé */
 footer {
     background-color: #333;
@@ -108,10 +129,9 @@ footer p {
     position: relative;
 }
 
+/* Messages */
 
-/*  Messages  */
-
-ul.messages{
+ul.messages {
     padding: 0;
 }
 
@@ -119,28 +139,27 @@ ul.messages li {
     list-style: none;
 }
 
-
 /* Paginação */
 .pagination {
     margin-bottom: 20px;
 }
+
 .step-links {
     position: relative;
     margin-left: auto;
     margin-right: auto;
 }
+
 .step-links .current {
     margin-left: 5px;
     margin-right: 5px;
 }
 
-
-/* Login */
+/* login */
 
 .auth-card {
     margin-bottom: 30px;
 }
-
 
 .change-form-p {
     margin-top: 30px;
